@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos - Rafael Café</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-image: url('img/FondoCafeRafael.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .productos {
+            background-color: rgba(210, 180, 140, 0.6);
+            padding: 40px 20px;
+            border-radius: 12px;
+            max-width: 1000px;
+            margin: 40px auto;
+            color: #4b3b2a;
+            text-align: center;
+        }
+
+        .productos h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .producto-lista {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .producto {
+            width: 250px;
+            text-align: center;
+        }
+
+        .producto img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .producto h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .producto p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .precio {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #6b4f3b;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .boton-comprar {
+            background-color: #6b4f3b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .boton-regresar {
+            margin-top: 40px;
+            display: inline-block;
+            background-color: white;
+            color: #6b4f3b;
+            border: 2px solid #6b4f3b;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border: 2px solid rgba(210, 180, 140, 0.6);
+        }
+
+        .producto {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .productos {
+                padding: 20px 10px;
+                margin: 20px auto;
+            }
+
+            .productos h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            .producto-lista {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .producto {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .producto h3 {
+                font-size: 1.2em;
+            }
+
+            .producto p {
+                font-size: 1em;
+            }
+
+            .precio {
+                font-size: 1.1em;
+            }
+
+            .boton-comprar {
+                width: 100%;
+                padding: 10px;
+                font-size: 1em;
+            }
+
+            .boton-regresar {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="producto-lista">
+
+        <div class="producto">
+            <img src="img/media.png" alt="Media Libra Rafael Café">
+            <h3>Media Libra</h3>
+            <p>Café molido artesanal, ideal para regalo o consumo personal. Presentación de 250g.</p>
+            <span class="precio">$3.50</span>
+            <a href="formularioventa.html" class="boton-comprar">Comprar</a>
+        </div>
+
+        <div class="producto">
+            <img src="img/libra.png" alt="Libra Rafael Café">
+            <h3>Libra</h3>
+            <p>Café de alta calidad, tostado medio. Perfecto para los amantes del sabor intenso. 227g.</p>
+            <span class="precio">$5.00</span>
+            <a href="formularioventa.html" class="boton-comprar">Comprar</a>
+        </div>
+
+        <div class="producto">
+            <img src="img/Planta.png" alt="Planta de café Rafael Café">
+            <h3>Planta de café</h3>
+            <p>Plantas jóvenes listas para cultivo o decoración. Cuida tu propio cafeto en casa.</p>
+            <span class="precio">$7.00</span>
+            <a href="formularioventa.html" class="boton-comprar">Comprar</a>
+        </div>
+
+    </div>
+
+    <a href="home.html" class="boton-regresar">Regresar al inicio</a>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
