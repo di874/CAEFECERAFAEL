@@ -1,9 +1,10 @@
-/*
+/**
 * Home - Rafael Cafe
 *
 *  PRERREQUISITOS
+ *
 * - Tener una imagen de fondo en el encabezado
-* - Elemento con clase y capa para mostrar el nombre de la empresa
+* - Elemento encabezado con clase y capa para mostrar el nombre de la empresa
 * - Menu de Navegacion y enlaces de redireccionamiento a otras paginas
 * - Sección de elaboración con texto explicativo sobre el proceso del café
 * - subsección de ingredientes con lista de elementos que componen el café

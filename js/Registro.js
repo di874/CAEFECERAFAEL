@@ -1,4 +1,4 @@
-/*
+/**
 *  Registro de Usuario Rafael Café
 *
 *  PRERREQUISITOS

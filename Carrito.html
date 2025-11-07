@@ -2,12 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carrito - Rafael Café</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
             background-image: url('img/FondoCafeRafael.jpg');
             background-size: cover;
@@ -15,144 +18,125 @@
             background-repeat: no-repeat;
             min-height: 100vh;
             padding: 20px;
-            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 248, 225, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
             color: #4b3b2a;
         }
 
-        .carrito-container {
-            background-color: rgba(210, 180, 140, 0.7);
-            padding: 40px;
-            border-radius: 12px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .carrito-container h2 {
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .producto-carrito {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .info, .producto, .total {
             margin-bottom: 20px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.6);
-            border-radius: 8px;
-        }
-
-        .producto-carrito img {
-            width: 80px;
+            padding: 10px;
+            background: #fff;
             border-radius: 6px;
-        }
-
-        .producto-info {
-            flex-grow: 1;
-            margin-left: 20px;
-        }
-
-        .producto-info h4 {
-            margin: 0;
-            font-size: 1.2em;
-        }
-
-        .producto-info p {
-            margin: 5px 0;
+            border: 1px solid #ddd;
         }
 
         .acciones {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            gap: 10px;
         }
 
-        .acciones button {
-            padding: 10px 20px;
-            border-radius: 6px;
+        button {
+            flex: 1;
+            padding: 10px;
             font-weight: bold;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
         }
 
-        .vaciar {
-            background-color: white;
-            color: #6b4f3b;
-            border: 2px solid #6b4f3b;
-        }
-
-        .comprar {
-            background-color: #6b4f3b;
+        .finalizar {
+            background-color: #4caf50;
             color: white;
         }
 
-        @media (max-width: 768px) {
-            .producto-carrito {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .productos {
+            background-color: #2196f3;
+            color: white;
+        }
 
-            .producto-info {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-
-            .acciones {
-                flex-direction: column;
-                gap: 10px;
-            }
+        .mensaje {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            border-radius: 6px;
+            display: none;
+            text-align: center;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<div class="carrito-container shadow-lg">
+<div class="container">
     <h2>Tu Carrito</h2>
 
-    <div id="lista-carrito">
-        <!-- Productos agregados dinámicamente -->
-    </div>
+    <div id="info" class="info"></div>
+    <div id="producto" class="producto"></div>
+    <div id="total" class="total"></div>
 
     <div class="acciones">
-        <button class="vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
-        <button class="comprar" onclick="window.location.href='formularioventa.html'">Finalizar compra</button>
+        <button class="finalizar" onclick="finalizarCompra()">Finalizar compra</button>
+        <button class="productos" onclick="window.location.href='Productos.html'">Ir a productos</button>
     </div>
+
+    <div id="mensaje" class="mensaje">COMPRA EXITOSA</div>
 </div>
 
-<script src="js/jquery-3.7.1.min.js"></script>
 <script>
-    // Mostrar productos del carrito
-    document.addEventListener('DOMContentLoaded', () => {
-        const listaCarrito = document.getElementById('lista-carrito');
-        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    function getParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            producto: params.get('producto'),
+            cantidad: parseInt(params.get('cantidad')),
+            precio: parseFloat(params.get('precio')),
+            nombre: params.get('nombre'),
+            telefono: params.get('telefono'),
+            direccion: params.get('direccion')
+        };
+    }
 
-        if (carrito.length === 0) {
-            listaCarrito.innerHTML = '<p class="text-center">Tu carrito está vacío.</p>';
-            return;
-        }
+    const datos = getParams();
+    const subtotal = datos.precio * datos.cantidad;
 
-        carrito.forEach(producto => {
-            const item = document.createElement('div');
-            item.classList.add('producto-carrito');
-            item.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}">
-        <div class="producto-info">
-          <h4>${producto.nombre}</h4>
-          <p>Cantidad: ${producto.cantidad}</p>
-          <p>Precio: $${(producto.precio * producto.cantidad).toFixed(2)}</p>
-        </div>
-      `;
-            listaCarrito.appendChild(item);
-        });
-    });
+    document.getElementById('info').innerHTML = `
+    <p><strong>Nombre:</strong> ${datos.nombre}</p>
+    <p><strong>Teléfono:</strong> ${datos.telefono}</p>
+    <p><strong>Dirección:</strong> ${datos.direccion}</p>
+  `;
 
-    // Vaciar carrito
-    function vaciarCarrito() {
-        localStorage.removeItem('carrito');
-        document.getElementById('lista-carrito').innerHTML = '<p class="text-center">Tu carrito está vacío.</p>';
+    document.getElementById('producto').innerHTML = `
+    <p><strong>Producto:</strong> ${datos.producto}</p>
+    <p><strong>Cantidad:</strong> ${datos.cantidad}</p>
+    <p><strong>Precio unitario:</strong> $${datos.precio.toFixed(2)}</p>
+  `;
+
+    document.getElementById('total').innerHTML = `
+    <p><strong>Total a pagar:</strong> $${subtotal.toFixed(2)}</p>
+  `;
+
+    function finalizarCompra() {
+        document.getElementById('mensaje').style.display = 'block';
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/Carrito.js"></script>
+
 </body>
 </html>
