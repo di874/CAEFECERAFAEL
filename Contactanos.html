@@ -113,22 +113,22 @@
     <form id="contactForm" action="#" method="POST">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre *</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required />
+            <input type="text" class="form-control" id="nombre" name="nombre"/>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" required />
+            <input type="email" class="form-control" id="email" name="email" />
         </div>
 
         <div class="mb-3">
             <label for="asunto" class="form-label">Asunto</label>
-            <input type="text" class="form-control" id="asunto" name="asunto" required />
+            <input type="text" class="form-control" id="asunto" name="asunto"  />
         </div>
 
         <div class="mb-3">
             <label for="mensaje" class="form-label">Mensaje *</label>
-            <textarea class="form-control" id="mensaje" name="mensaje" required></textarea>
+            <textarea class="form-control" id="mensaje" name="mensaje" ></textarea>
         </div>
 
         <button type="submit" class="submit-btn">Enviar mensaje</button>
@@ -143,13 +143,13 @@
 <script src="js/jquery-3.7.1.min.js"> </script>
 <script src="js/Contactanos.js"></script>
 <script>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
+    $('#contactForm').on('submit', function (e) {
         e.preventDefault();
 
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const asunto = document.getElementById('asunto').value.trim();
-        const mensaje = document.getElementById('mensaje').value.trim();
+        const nombre = $('#nombre').val().trim();
+        const email = $('#email').val().trim();
+        const asunto = $('#asunto').val().trim();
+        const mensaje = $('#mensaje').val().trim();
 
         if (!nombre || !email || !asunto || !mensaje) {
             alert('Por favor, completa todos los campos obligatorios.');

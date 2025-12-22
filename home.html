@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Rafael Café</title>
-
+    <title>Café Rafael - Página principal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -20,6 +18,20 @@
         body {
             margin: 0;
             background-color: #fdf6f0;
+            color: #2c2c2c; /* contraste mejorado */
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 0;
         }
 
         .hero-header {
@@ -43,7 +55,7 @@
         }
 
         .empresa-nombre {
-            color: white;
+            color: #fff;
             font-size: 3em;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
@@ -51,7 +63,7 @@
             letter-spacing: 2px;
         }
 
-        .main-nav {
+        nav.main-nav {
             background-color: #d2b48c;
             padding: 15px 0;
             text-align: center;
@@ -76,8 +88,10 @@
             transition: color 0.3s ease;
         }
 
-        .main-nav a:hover {
+        .main-nav a:hover,
+        .main-nav a:focus {
             color: #8b4513;
+            outline: 2px solid #000;
         }
 
         .elaboracion {
@@ -152,13 +166,15 @@
 </head>
 <body>
 
-<header class="hero-header">
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+<header class="hero-header" role="banner">
     <div class="overlay">
         <h1 class="empresa-nombre">RAFAEL CAFÉ</h1>
     </div>
 </header>
 
-<nav class="main-nav">
+<nav class="main-nav" role="navigation" aria-label="Menú principal">
     <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="Productos.html">Productos</a></li>
@@ -169,33 +185,34 @@
     </ul>
 </nav>
 
+<main id="main">
+    <section class="elaboracion">
+        <div class="proceso">
+            <h2>¿Cómo se elabora nuestro café?</h2>
+            <p>Seleccionamos granos frescos de origen ecuatoriano, los tostamos artesanalmente y los molemos al instante para conservar su aroma. El agua se calienta a temperatura precisa y se vierte lentamente para extraer cada nota de sabor.</p>
+        </div>
 
-<section class="elaboracion">
-    <div class="proceso">
-        <h2>¿Cómo se elabora nuestro café?</h2>
-        <p>Seleccionamos granos frescos de origen ecuatoriano, los tostamos artesanalmente y los molemos al instante para conservar su aroma. El agua se calienta a temperatura precisa y se vierte lentamente para extraer cada nota de sabor.</p>
-    </div>
+        <div class="ingredientes">
+            <h2>¿Con qué se elabora?</h2>
+            <ul>
+                <li>Granos de café 100% ecuatorianos</li>
+                <li>Agua purificada</li>
+                <li>Filtros biodegradables</li>
+                <li>Amor por el detalle</li>
+            </ul>
+        </div>
+    </section>
+</main>
 
-    <div class="ingredientes">
-        <h2>¿Con qué se elabora?</h2>
-        <ul>
-            <li>Granos de café 100% ecuatorianos</li>
-            <li>Agua purificada</li>
-            <li>Filtros biodegradables</li>
-            <li>Amor por el detalle</li>
-        </ul>
-    </div>
-</section>
-
+<footer role="contentinfo">
+    <p>&copy; 2025 Café Rafael. Todos los derechos reservados.</p>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/Home.js"></script>
 
-
 <script>
-
     // Arreglo de productos de Café Rafael
     const productos = [
         {
@@ -220,11 +237,8 @@
         console.log(`Producto: ${producto.nombre}`);
         console.log(`Descripción: ${producto.descripcion}`);
         console.log(`Precio: $${producto.precio.toFixed(2)}`);
-
     });
 </script>
-
-
 
 </body>
 </html>
