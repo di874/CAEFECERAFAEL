@@ -17,8 +17,8 @@
 
         body {
             margin: 0;
-            background-color: #fdf6f0;
-            color: #2c2c2c; /* contraste mejorado */
+            background-color: #FDF6F0; /* fondo beige */
+            color: #000000;            /* texto negro */
         }
 
         /* Skip link para saltar navegación repetitiva */
@@ -26,8 +26,8 @@
             position: absolute;
             top: -40px;
             left: 0;
-            background: #000;
-            color: #fff;
+            background: #000000;
+            color: #FFFFFF;
             padding: 8px;
             z-index: 100;
         }
@@ -56,7 +56,7 @@
         }
 
         .empresa-nombre {
-            color: #fff;
+            color: #FFFFFF;
             font-size: 3em;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
@@ -83,7 +83,7 @@
 
         .main-nav a {
             text-decoration: none;
-            color: #333;
+            color: #000000; /* texto negro */
             font-weight: bold;
             font-size: 1.1em;
             transition: color 0.3s ease;
@@ -91,14 +91,14 @@
 
         .main-nav a:hover,
         .main-nav a:focus {
-            color: #8b4513;
-            outline: 2px solid #000; /* foco visible */
+            color: #8B0000; /* rojo oscuro para contraste */
+            outline: 2px solid #000000; /* foco visible */
         }
 
         .elaboracion {
             padding: 40px 20px;
-            background-color: #fdf6f0;
-            color: #4b3b2a;
+            background-color: #FDF6F0;
+            color: #000000; /* texto negro */
             text-align: center;
         }
 
@@ -127,6 +127,7 @@
             margin: 10px 0;
             padding: 10px;
             background-color: #e8e2d9;
+            color: #000000; /* texto negro */
             border-radius: 8px;
         }
 
@@ -214,32 +215,6 @@
 <script src="js/Home.js"></script>
 
 <script>
-    // Arreglo de productos de Café Rafael
-    const productos = [
-        {
-            nombre: "Media Libra",
-            descripcion: "Café molido artesanal, ideal para regalo o consumo personal. Presentación de 250g.",
-            precio: 3.50
-        },
-        {
-            nombre: "Libra",
-            descripcion: "Café de alta calidad, tostado medio. Perfecto para los amantes del sabor intenso. 227g.",
-            precio: 5.00
-        },
-        {
-            nombre: "Planta de café",
-            descripcion: "Plantas jóvenes listas para cultivo o decoración. Cuida tu propio cafeto en casa.",
-            precio: 7.00
-        }
-    ];
-
-    // Mostrar productos en consola
-    productos.forEach(producto => {
-        console.log(`Producto: ${producto.nombre}`);
-        console.log(`Descripción: ${producto.descripcion}`);
-        console.log(`Precio: $${producto.precio.toFixed(2)}`);
-    });
-
     // Función para usar la tecla Escape como "regresar"
     document.addEventListener("keydown", function(event) {
         if (event.key === "Escape") {
