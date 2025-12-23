@@ -21,6 +21,7 @@
             color: #2c2c2c; /* contraste mejorado */
         }
 
+        /* Skip link para saltar navegación repetitiva */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -91,7 +92,7 @@
         .main-nav a:hover,
         .main-nav a:focus {
             color: #8b4513;
-            outline: 2px solid #000;
+            outline: 2px solid #000; /* foco visible */
         }
 
         .elaboracion {
@@ -237,6 +238,13 @@
         console.log(`Producto: ${producto.nombre}`);
         console.log(`Descripción: ${producto.descripcion}`);
         console.log(`Precio: $${producto.precio.toFixed(2)}`);
+    });
+
+    // Función para usar la tecla Escape como "regresar"
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            window.history.back();
+        }
     });
 </script>
 
